@@ -1,10 +1,18 @@
-import React, { Component } from "react";
-import styled from "styled-components";
+import React, { useState } from "react";
 
-class SearchBar extends Component {
-  render() {
-    return <input />;
+const SearchBar = () => {
+  const [input, setInput] = useState("");
+
+  function onFormSubmit(e) {
+    e.preventDefault();
+    console.log("puasa");
   }
-}
+
+  return (
+    <form onSubmit={onFormSubmit}>
+      <input onChange={e => setInput(e.target.value)} value={input} />
+    </form>
+  );
+};
 
 export default SearchBar;
