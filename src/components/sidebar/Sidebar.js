@@ -1,5 +1,6 @@
-import React, { Component } from "react";
+import React from "react";
 import styled from "styled-components";
+import Genres from "./Genres";
 
 const Wrapper = styled.div`
   display: flex;
@@ -10,10 +11,14 @@ const Wrapper = styled.div`
   align-items: center;
 `;
 
-class Sidebar extends Component {
-  render() {
-    return <Wrapper>Sidebar</Wrapper>;
-  }
-}
+const Sidebar = props => {
+  return (
+    <Wrapper>
+      <p>Top Rated</p>
+      <p>Popular</p>
+      <Genres />
+    </Wrapper>
+  );
+};
 
 export default Sidebar;
