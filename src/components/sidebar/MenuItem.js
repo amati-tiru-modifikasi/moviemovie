@@ -1,7 +1,6 @@
 import React from "react";
 import styled from "styled-components";
 import { connect } from "react-redux";
-import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { setSelectedMenu } from "../../actions";
 import {
@@ -11,7 +10,7 @@ import {
   faDotCircle
 } from "@fortawesome/free-solid-svg-icons";
 
-const StyledLink = styled(Link)`
+const StyledLink = styled.div`
   padding: 1rem 2rem;
   font-weight: 600;
   font-size: 1.2rem;
@@ -48,7 +47,6 @@ function renderIcon(title) {
 const MenuItem = ({ title, selectedItem, setSelectedMenu }) => {
   return (
     <StyledLink
-      to={`/category/${title}`}
       onClick={() => setSelectedMenu(title)}
       selected={
         title === selectedItem || (title === "Popular" && !selectedItem)

@@ -1,10 +1,15 @@
 import React, { useEffect } from "react";
 import { connect } from "react-redux";
 import styled from "styled-components";
+import { Link } from "react-router-dom";
 import { getGenres } from "../../actions";
 import MenuItem from "./MenuItem";
 
 // komponen
+const LinkWrap = styled(Link)`
+  text-decoration: none;
+`;
+
 const Genres = ({ getGenres, genres }) => {
   useFetchGenres(getGenres);
   if (!genres) {
@@ -16,7 +21,9 @@ const Genres = ({ getGenres, genres }) => {
 // render list genres tersedia
 function renderList(genres) {
   return genres.map(genre => (
-    <MenuItem key={genre.id} title={genre.name} genres />
+    <LinkWrap to={`/genres/$genre.name`}>
+      <MenuItem key={genre.id} title={genre.name} genres />
+    </LinkWrap>
   ));
 }
 

@@ -8,7 +8,7 @@ import Sidebar from "./sidebar/Sidebar";
 import Header from "./header/Header";
 import Home from "./Home";
 import NotFound from "./NotFound";
-import Category from "./movielist/Category";
+import Genre from "./movielist/Genre";
 
 const GlobalStyle = createGlobalStyle`
 * {
@@ -70,7 +70,7 @@ const App = props => {
             <Header />
             <Switch>
               <Route path="/" exact component={Home} />
-              <Route path="/:category" exact component={Category} />
+              <Route path="/:genres" exact component={Genre} />
               <Route component={NotFound} />
             </Switch>
           </ContentWrapper>
