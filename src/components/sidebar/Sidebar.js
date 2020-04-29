@@ -1,8 +1,12 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styled from "styled-components";
+import { connect } from "react-redux";
+
 import Genres from "./Genres";
 import Logo from "./Logo";
 import MenuItem from "./MenuItem";
+
+import { setSelectedMenu } from "../../actions";
 
 const Wrapper = styled.div`
   display: flex;
@@ -32,14 +36,16 @@ const MenuWrapper = styled.div`
   border-right: 2px solid var(--color-primary-lighter);
 `;
 
-const Sidebar = props => {
+const Sidebar = ({ location, setSelectedMenu }) => {
+  useSetSelected(location, setSelectedMenu);
+
   return (
     <Wrapper>
       <Logo />
       <MenuWrapper>
         <Heading>Discover</Heading>
         <MenuItem title={"Popular"} />
-        <MenuItem title={"Top Rated"} selected />
+        <MenuItem title={"Top Rated"} />
         <MenuItem title={"Upcoming"} />
         <Heading>Genres</Heading>
         <Genres />
@@ -48,4 +54,11 @@ const Sidebar = props => {
   );
 };
 
-export default Sidebar;
+function useSetSelected(location, cb) {
+  useEffect(() => {
+    const trimmedPath = location.pathname.replace(/\//g, "");
+    cb(trimmedPath);
+  }, [location.pathname]);
+}
+
+export default connect(null, { setSelectedMenu })(Sidebar);

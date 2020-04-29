@@ -1,11 +1,13 @@
 import React, { useEffect } from "react";
 import styled, { createGlobalStyle } from "styled-components";
-import { BrowserRouter } from "react-router-dom";
+import { BrowserRouter, Switch, Route } from "react-router-dom";
 import { connect } from "react-redux";
 import { getConfig } from "../actions";
 
 import Sidebar from "./sidebar/Sidebar";
 import Header from "./header/Header";
+
+import MovieList from "./movielist/MovieList";
 
 const GlobalStyle = createGlobalStyle`
 * {
@@ -39,7 +41,7 @@ const MainWrapper = styled.div`
   --color-primary-lighter: #b0bec5;
   --text-color: #fafafa;
   --link-color: #444;
-  --border-color: rgba(176, 190, 197, 0.2);
+  --border-color: rgba(176, 190, 197, 0.5);
   --shadow-color: rgba(0, 0, 0, 0.15);
 `;
 
@@ -60,9 +62,13 @@ const App = props => {
       <React.Fragment>
         <GlobalStyle />
         <MainWrapper>
-          <Sidebar />
+          <Route path="/" component={Sidebar} />
           <ContentWrapper>
-            <Header />
+            <Route path="/" component={Header} />
+            <Switch>
+              <Route path="/" exact component={MovieList} />
+              <Route path="/:category" exact component={MovieList} />
+            </Switch>
           </ContentWrapper>
         </MainWrapper>
       </React.Fragment>

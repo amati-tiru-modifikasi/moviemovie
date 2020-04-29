@@ -17,3 +17,11 @@ export const getGenres = () => async dispatch => {
     payload: res.data
   });
 };
+
+// SET SELECTED SIDEBAR ITEM
+export const setSelectedMenu = name => {
+  return {
+    type: TYPES.SELECTED_MENU,
+    payload: name
+  };
+};

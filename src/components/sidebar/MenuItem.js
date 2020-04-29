@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -43,9 +44,16 @@ function renderIcon(title) {
   }
 }
 
-const MenuItem = ({ title, selected }) => {
+const MenuItem = ({ title, selectedItem }) => {
   return (
-    <StyledLink to="/aa" selected={selected}>
+    <StyledLink
+      to={`/${title}`}
+      selected={
+        title === selectedItem || (title === "Popular" && !selectedItem)
+          ? true
+          : false
+      }
+    >
       <FontAwesomeIcon
         icon={renderIcon(title)}
         size="1x"
@@ -56,4 +64,8 @@ const MenuItem = ({ title, selected }) => {
   );
 };
 
-export default MenuItem;
+const mapStateToProps = ({ geral }) => {
+  return { selectedItem: geral.selected };
+};
+
+export default connect(mapStateToProps)(MenuItem);
