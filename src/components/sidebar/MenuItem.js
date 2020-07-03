@@ -1,8 +1,8 @@
 import React from "react";
 import styled from "styled-components";
 import { connect } from "react-redux";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { setSelectedMenu } from "../../actions";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faCalendar,
   faPoll,
@@ -25,6 +25,9 @@ const StyledLink = styled.div`
   border-radius: 2rem;
   display: flex;
   align-items: center;
+  text-decoration: none;
+  width: 100%;
+  cursor: pointer;
 `;
 
 // render icon yang dipake
@@ -48,16 +51,12 @@ const MenuItem = ({ title, selectedItem, setSelectedMenu }) => {
   return (
     <StyledLink
       onClick={() => setSelectedMenu(title)}
-      selected={
-        title === selectedItem || (title === "Popular" && !selectedItem)
-          ? true
-          : false
-      }
+      selected={title === selectedItem ? true : false}
     >
       <FontAwesomeIcon
         icon={renderIcon(title)}
         size="1x"
-        style={{ marginRight: "10px" }}
+        style={{ marginRight: '10px' }}
       />
       {title}
     </StyledLink>

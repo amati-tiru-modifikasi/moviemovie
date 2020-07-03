@@ -31,7 +31,7 @@ const SearchBar = () => {
 
   return (
     <form onSubmit={onFormSubmit}>
-      <input
+      <Input
         onChange={e => setInput(e.target.value)}
         value={input}
         placeholder="Pencarian..."

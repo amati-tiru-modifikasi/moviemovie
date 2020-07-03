@@ -33,7 +33,7 @@ const MenuWrapper = styled.div`
   width: 100%;
   padding: 2rem 3rem;
   position: relative;
-  border-right: 2px solid var(--color-primary-lighter);
+  border-right: 1px solid var(--border-color);
 `;
 
 const Sidebar = () => {

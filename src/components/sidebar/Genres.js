@@ -21,7 +21,7 @@ const Genres = ({ getGenres, genres }) => {
 // render list genres tersedia
 function renderList(genres) {
   return genres.map(genre => (
-    <LinkWrap to={`/genres/$genre.name`}>
+    <LinkWrap to={`/genres/{$genre.name}`}>
       <MenuItem key={genre.id} title={genre.name} genres />
     </LinkWrap>
   ));
